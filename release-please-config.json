@@ -1,0 +1,14 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "9d42ad912a5b758be4e8a7fd3a29f0a3826aaa20",
+  "include-component-in-tag": false,
+  "bump-minor-pre-major": true,
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "tree-sitter-super",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [{ "type": "json", "path": "tree-sitter.json", "jsonpath": "$.metadata.version" }]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# Opens and maintains a release pull request from the Conventional Commits on main. Merging it bumps
+# the version in package.json and tree-sitter.json, updates CHANGELOG.md, and creates the tag and
+# the GitHub release.
+name: release-please
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

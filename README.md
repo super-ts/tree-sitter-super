@@ -29,6 +29,14 @@ a submodule (`editors/tree-sitter-super`).
 The Zed extension of Super builds the grammar from this git repository, at the revision set in
 `editors/zed/extension.toml`: after a change, commit here, then update `rev` there.
 
+## Releases
+
+Versions follow the [Conventional Commits](https://www.conventionalcommits.org/) on `main`:
+[release-please](https://github.com/googleapis/release-please) keeps a release pull request open,
+with the next version in `package.json` and `tree-sitter.json` and the new `CHANGELOG.md` entries.
+Merging it creates the `vX.Y.Z` tag and the GitHub release. Before 1.0, `feat` bumps the minor
+version and `fix` the patch version; a breaking change bumps the minor version.
+
 ## Licence
 
 [MIT](LICENSE)
