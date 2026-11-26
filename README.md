@@ -7,20 +7,28 @@
 
 # tree-sitter-super
 
-Grammaire Tree-sitter des fichiers `.super` du framework Super : celle de TSX
-(`zed-industries/tree-sitter-typescript`), plus les instructions écrites entre les balises (`if`,
-`for … ; key`, `switch`, déclarations) et un scanner adapté (`src/scanner.h`) :
+Tree-sitter grammar for the `.super` files of the [Super](https://github.com/super-ts/super) framework.
+It is the TSX grammar (`zed-industries/tree-sitter-typescript`), plus the statements written between
+tags (`if`, `for … ; key`, `switch`, declarations, named slots `<:name>`), the `@tag` and `@title`
+declarations of a component body, and an adapted external scanner (`src/scanner.h`):
 
-- le texte entre balises s'arrête devant une forme réservée en début d'enfant, comme le parser des
-  `.super` (`packages/lang/src/parser.ts`) ;
-- un point-virgule automatique est inséré avant un `<` suivi d'une lettre en début de ligne : deux
-  éléments sur deux lignes sont deux instructions, pas une comparaison.
+- text between tags stops before a reserved form at the start of a child, like the `.super` parser
+  of the Super compiler (`packages/lang/src/parser.ts`);
+- an automatic semicolon is inserted before a `<` followed by a letter at the start of a line: two
+  elements on two lines are two statements, not a comparison.
 
 ```sh
 npm install
-npm run generate                                     # régénère src/parser.c
-npm run check                                        # chaque .super du dépôt, sans nœud ERROR attendu
+npm run generate   # regenerates src/parser.c
+npm run check      # parses every .super file of the Super repository, expecting no ERROR node
 ```
 
-Zed compile la grammaire depuis ce dépôt git, à la révision donnée dans `editors/zed/extension.toml` :
-après une modification, commiter ici puis mettre à jour `rev`.
+`npm run check` reads the `.super` files of the Super repository, in which this grammar is mounted as
+a submodule (`editors/tree-sitter-super`).
+
+The Zed extension of Super builds the grammar from this git repository, at the revision set in
+`editors/zed/extension.toml`: after a change, commit here, then update `rev` there.
+
+## Licence
+
+[MIT](LICENSE)

@@ -116,8 +116,8 @@ static bool scan_automatic_semicolon(TSLexer *lexer, const bool *valid_symbols, 
     }
 
     switch (lexer->lookahead) {
-        // .super : un `<` suivi d'une lettre en début de ligne ouvre un élément, qui est une nouvelle
-        // instruction (deux éléments sur deux lignes ne sont pas une comparaison).
+        // .super: a `<` followed by a letter at the start of a line opens an element, which is a new
+        // statement (two elements on two lines are not a comparison).
         case '<':
             skip(lexer);
             return iswalpha(lexer->lookahead);
@@ -278,7 +278,7 @@ static bool scan_closing_comment(TSLexer *lexer) {
     return true;
 }
 
-/** Lit un mot (lettres) et le compare à `word`. */
+/** Reads a word (letters) and compares it with `word`. */
 static bool read_word(TSLexer *lexer, const char *word) {
     for (const char *c = word; *c; c++) {
         if (lexer->lookahead != *c) return false;
@@ -292,10 +292,10 @@ static void skip_spaces(TSLexer *lexer) {
 }
 
 /**
- * .super : un enfant qui commence par une forme réservée est une instruction, pas du texte
+ * .super: a child that starts with a reserved form is a statement, not text
  * (`if (`, `for (`, `switch (`, `const x =`, `let x =`, `else`, `case`, `default:`, `break;`).
- * Avance sur ce qu'il lit : l'appelant rend la main au lexer interne (qui repart du début) si c'est
- * une instruction, et continue le texte sinon.
+ * Advances over what it reads: the caller hands back to the internal lexer (which starts again from
+ * the beginning) if it is a statement, and carries on with the text otherwise.
  */
 static bool starts_statement(TSLexer *lexer) {
     switch (lexer->lookahead) {
@@ -338,7 +338,7 @@ static bool starts_statement(TSLexer *lexer) {
         default:
             return false;
     }
-    // `const` ou `let` : une déstructuration, ou un nom puis `=` (ou `:` d'un type).
+    // `const` or `let`: a destructuring pattern, or a name then `=` (or the `:` of a type).
     skip_spaces(lexer);
     if (lexer->lookahead == '{' || lexer->lookahead == '[') return true;
     if (!iswalpha(lexer->lookahead) && lexer->lookahead != '_' && lexer->lookahead != '$') return false;
@@ -358,7 +358,7 @@ static bool scan_jsx_text(TSLexer *lexer) {
     // immediately follows a newline.
     bool at_newline = false;
 
-    // .super : les blancs du début, puis une éventuelle instruction (qui n'est pas du texte).
+    // .super: leading whitespace, then a possible statement (which is not text).
     bool leading = false;
     while (iswspace(lexer->lookahead)) {
         if (lexer->lookahead == '\n') at_newline = true;
@@ -369,11 +369,11 @@ static bool scan_jsx_text(TSLexer *lexer) {
     if (leading) lexer->mark_end(lexer);
     int32_t first = lexer->lookahead;
     if (starts_statement(lexer)) {
-        // Une instruction : pas de texte (les blancs à côté d'une instruction ne rendent rien, et un
-        // texte entre `}` et `else` séparerait le `else` de son `if`). Le lexer interne reprend.
+        // A statement: no text (whitespace next to a statement renders nothing, and text between
+        // `}` and `else` would separate the `else` from its `if`). The internal lexer takes over.
         return false;
     }
-    // Pas une instruction : ce qui a été lu (un mot, ou rien) fait partie du texte.
+    // Not a statement: what was read (a word, or nothing) is part of the text.
     if (first != 0 && first != '<' && first != '>' && first != '{' && first != '}' && first != '&') saw_text = true;
 
     while (lexer->lookahead != 0 && lexer->lookahead != '<' && lexer->lookahead != '>' && lexer->lookahead != '{' &&

@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-super",
   "private": true,
-  "description": "Grammaire Tree-sitter des fichiers .super (étend celle de TSX).",
+  "description": "Tree-sitter grammar for Super .super files (extends the TSX grammar).",
   "scripts": {
     "generate": "tree-sitter generate",
     "parse": "tree-sitter parse",

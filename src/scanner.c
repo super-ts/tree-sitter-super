@@ -1,5 +1,5 @@
-// Scanner externe de la grammaire .super : celui de TSX (tree-sitter-typescript), adapté dans
-// scanner.h (texte entre balises, point-virgule automatique avant un élément).
+// External scanner of the .super grammar: the TSX one (tree-sitter-typescript), adapted in
+// scanner.h (text between tags, automatic semicolon before an element).
 #include "scanner.h"
 
 void *tree_sitter_super_external_scanner_create() { return NULL; }
