@@ -3287,6 +3287,10 @@
           "named": true
         },
         {
+          "type": "jsx_slot",
+          "named": true
+        },
+        {
           "type": "jsx_switch_statement",
           "named": true
         },
@@ -3391,6 +3395,10 @@
         },
         {
           "type": "jsx_self_closing_element",
+          "named": true
+        },
+        {
+          "type": "jsx_slot",
           "named": true
         },
         {
@@ -3647,6 +3655,78 @@
     }
   },
   {
+    "type": "jsx_slot",
+    "named": true,
+    "fields": {
+      "close_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "html_character_reference",
+          "named": true
+        },
+        {
+          "type": "jsx_declaration",
+          "named": true
+        },
+        {
+          "type": "jsx_element",
+          "named": true
+        },
+        {
+          "type": "jsx_expression",
+          "named": true
+        },
+        {
+          "type": "jsx_for_statement",
+          "named": true
+        },
+        {
+          "type": "jsx_if_statement",
+          "named": true
+        },
+        {
+          "type": "jsx_self_closing_element",
+          "named": true
+        },
+        {
+          "type": "jsx_slot",
+          "named": true
+        },
+        {
+          "type": "jsx_switch_statement",
+          "named": true
+        },
+        {
+          "type": "jsx_text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "jsx_switch_case",
     "named": true,
     "fields": {
@@ -3694,6 +3774,10 @@
           "named": true
         },
         {
+          "type": "jsx_slot",
+          "named": true
+        },
+        {
           "type": "jsx_switch_statement",
           "named": true
         },
@@ -3738,6 +3822,10 @@
         },
         {
           "type": "jsx_self_closing_element",
+          "named": true
+        },
+        {
+          "type": "jsx_slot",
           "named": true
         },
         {
@@ -6406,11 +6494,11 @@
   },
   {
     "type": "number",
-    "named": true
+    "named": false
   },
   {
     "type": "number",
-    "named": false
+    "named": true
   },
   {
     "type": "object",

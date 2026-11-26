@@ -12,7 +12,7 @@ Grammaire Tree-sitter des fichiers `.super` du framework Super : celle de TSX
 ```sh
 npm install
 npm run generate                                     # régénère src/parser.c
-npx tree-sitter parse --quiet --stat --paths <liste>  # aucun nœud ERROR attendu sur les .super du dépôt
+npm run check                                        # chaque .super du dépôt, sans nœud ERROR attendu
 ```
 
 Zed compile la grammaire depuis ce dépôt git, à la révision donnée dans `editors/zed/extension.toml` :

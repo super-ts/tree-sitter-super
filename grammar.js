@@ -10,7 +10,11 @@ module.exports = grammar(TSX, {
   rules: {
     // Entre les balises : aussi des instructions.
     _jsx_child: ($, previous) =>
-      choice(previous, $.jsx_if_statement, $.jsx_for_statement, $.jsx_switch_statement, $.jsx_declaration),
+      choice(previous, $.jsx_if_statement, $.jsx_for_statement, $.jsx_switch_statement, $.jsx_declaration, $.jsx_slot),
+
+    // Un emplacement nommé d'un composant : `<:footer>…</:footer>`.
+    jsx_slot: ($) =>
+      seq('<', ':', field('name', $.identifier), '>', repeat($._jsx_child), '<', '/', ':', field('close_name', $.identifier), '>'),
 
     // Le corps d'une instruction : des enfants, comme ceux d'un élément.
     jsx_block: ($) => seq('{', repeat($._jsx_child), '}'),
