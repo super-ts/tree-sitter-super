@@ -1,0 +1,26 @@
+# Checks that the committed parser matches grammar.js and that the corpus tests pass.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Generated parser is up to date
+        run: |
+          npx tree-sitter generate
+          git diff --exit-code -- src
+      - run: npm test
