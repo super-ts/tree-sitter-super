@@ -1,0 +1,33 @@
+========================================================================
+@tag and @title in a class body
+========================================================================
+
+class Panel extends SuperElement {
+  @tag = 'my-panel';
+  @title = 'Panel';
+  @prop label: string;
+}
+
+---
+
+(program
+  (class_declaration
+    name: (type_identifier)
+    (class_heritage
+      (extends_clause
+        value: (identifier)))
+    body: (class_body
+      (super_declaration
+        name: (identifier)
+        value: (string
+          (string_fragment)))
+      (super_declaration
+        name: (identifier)
+        value: (string
+          (string_fragment)))
+      (public_field_definition
+        decorator: (decorator
+          (identifier))
+        name: (property_identifier)
+        type: (type_annotation
+          (predefined_type))))))

@@ -1,0 +1,39 @@
+========================================================================
+text starting with a reserved word
+========================================================================
+
+<p>for more info, see below</p>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_text)
+      close_tag: (jsx_closing_element
+        name: (identifier)))))
+
+========================================================================
+two elements on two lines are two statements
+========================================================================
+
+<a></a>
+<b></b>
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      close_tag: (jsx_closing_element
+        name: (identifier))))
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))

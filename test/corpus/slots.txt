@@ -1,0 +1,28 @@
+========================================================================
+named slot
+========================================================================
+
+<Card>
+  <:footer>
+    <b>Done</b>
+  </:footer>
+</Card>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_slot
+        name: (identifier)
+        (jsx_element
+          open_tag: (jsx_opening_element
+            name: (identifier))
+          (jsx_text)
+          close_tag: (jsx_closing_element
+            name: (identifier)))
+        close_name: (identifier))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))

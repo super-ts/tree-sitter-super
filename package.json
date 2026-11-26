@@ -5,6 +5,7 @@
   "scripts": {
     "generate": "tree-sitter generate",
     "parse": "tree-sitter parse",
+    "test": "tree-sitter test",
     "check": "find ../../examples ../../packages -type f -name '*.super' -not -path '*/node_modules/*' -not -path '*/.super/*' -not -name errors.super > /tmp/tree-sitter-super-files.txt && tree-sitter parse --quiet --stat --paths /tmp/tree-sitter-super-files.txt"
   },
   "devDependencies": {

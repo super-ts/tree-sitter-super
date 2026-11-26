@@ -1,0 +1,149 @@
+========================================================================
+if and else between tags
+========================================================================
+
+<p>
+  if (ok) {
+    <b>yes</b>
+  } else {
+    <i>no</i>
+  }
+</p>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_if_statement
+        condition: (parenthesized_expression
+          (identifier))
+        consequence: (jsx_block
+          (jsx_element
+            open_tag: (jsx_opening_element
+              name: (identifier))
+            (jsx_text)
+            close_tag: (jsx_closing_element
+              name: (identifier))))
+        alternative: (jsx_block
+          (jsx_element
+            open_tag: (jsx_opening_element
+              name: (identifier))
+            (jsx_text)
+            close_tag: (jsx_closing_element
+              name: (identifier)))))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))
+
+========================================================================
+for with a key
+========================================================================
+
+<ul>
+  for (const item of items; key item.id) {
+    <li>{item.label}</li>
+  }
+</ul>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_for_statement
+        left: (identifier)
+        right: (identifier)
+        key: (member_expression
+          object: (identifier)
+          property: (property_identifier))
+        body: (jsx_block
+          (jsx_element
+            open_tag: (jsx_opening_element
+              name: (identifier))
+            (jsx_expression
+              (member_expression
+                object: (identifier)
+                property: (property_identifier)))
+            close_tag: (jsx_closing_element
+              name: (identifier)))))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))
+
+========================================================================
+switch with case and default
+========================================================================
+
+<div>
+  switch (state) {
+    case 'busy':
+      <span>Busy</span>
+    default:
+      <span>Idle</span>
+      break;
+  }
+</div>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_switch_statement
+        value: (parenthesized_expression
+          (identifier))
+        (jsx_switch_case
+          value: (string
+            (string_fragment))
+          (jsx_element
+            open_tag: (jsx_opening_element
+              name: (identifier))
+            (jsx_text)
+            close_tag: (jsx_closing_element
+              name: (identifier))))
+        (jsx_switch_default
+          (jsx_element
+            open_tag: (jsx_opening_element
+              name: (identifier))
+            (jsx_text)
+            close_tag: (jsx_closing_element
+              name: (identifier)))))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))
+
+========================================================================
+declaration between tags
+========================================================================
+
+<li>
+  const { product } = line;
+  <b>{product}</b>
+</li>;
+
+---
+
+(program
+  (expression_statement
+    (jsx_element
+      open_tag: (jsx_opening_element
+        name: (identifier))
+      (jsx_declaration
+        (lexical_declaration
+          (variable_declarator
+            name: (object_pattern
+              (shorthand_property_identifier_pattern))
+            value: (identifier))))
+      (jsx_element
+        open_tag: (jsx_opening_element
+          name: (identifier))
+        (jsx_expression
+          (identifier))
+        close_tag: (jsx_closing_element
+          name: (identifier)))
+      close_tag: (jsx_closing_element
+        name: (identifier)))))
