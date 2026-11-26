@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-super",
   "private": true,
-  "description": "Grammaire Tree-sitter des fichiers .super (\u00e9tend celle de TSX).",
+  "description": "Grammaire Tree-sitter des fichiers .super (étend celle de TSX).",
   "scripts": {
     "generate": "tree-sitter generate",
     "parse": "tree-sitter parse",
@@ -10,5 +10,6 @@
   "devDependencies": {
     "tree-sitter-cli": "^0.24.7",
     "tree-sitter-typescript": "github:zed-industries/tree-sitter-typescript#e2c53597d6a5d9cf7bbe8dccde576fe1e46c5899"
-  }
+  },
+  "license": "MIT"
 }
