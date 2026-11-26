@@ -51,5 +51,14 @@ module.exports = grammar(TSX, {
 
     // `const { product } = line;`
     jsx_declaration: ($) => $.lexical_declaration,
+
+    // Dans le corps d'une classe : `@tag = 'confirm-dialog';` et `@title = 'Confirmation';` (les
+    // `@prop nom: Type;` et `@emit nom: Type;` sont des champs décorés, du TS ordinaire).
+    class_body: ($, previous) => {
+      const body = previous.members[1];
+      return seq('{', repeat(choice($.super_declaration, ...body.content.members)), '}');
+    },
+    super_declaration: ($) =>
+      seq('@', field('name', alias(choice('tag', 'title'), $.identifier)), '=', field('value', $.expression), $._semicolon),
   },
 });

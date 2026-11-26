@@ -6615,6 +6615,10 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "SYMBOL",
+                "name": "super_declaration"
+              },
+              {
                 "type": "SEQ",
                 "members": [
                   {
@@ -11491,6 +11495,53 @@
     "jsx_declaration": {
       "type": "SYMBOL",
       "name": "lexical_declaration"
+    },
+    "super_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "@"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "tag"
+                },
+                {
+                  "type": "STRING",
+                  "value": "title"
+                }
+              ]
+            },
+            "named": true,
+            "value": "identifier"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_semicolon"
+        }
+      ]
     }
   },
   "extras": [

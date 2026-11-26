@@ -1442,6 +1442,10 @@
         {
           "type": "public_field_definition",
           "named": true
+        },
+        {
+          "type": "super_declaration",
+          "named": true
         }
       ]
     }
@@ -5315,6 +5319,32 @@
         "types": [
           {
             "type": "optional_chain",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "super_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "expression",
             "named": true
           }
         ]
