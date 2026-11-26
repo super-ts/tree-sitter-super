@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg" />
+    <img src="assets/logo-light.svg" alt="Super." width="140" />
+  </picture>
+</p>
+
 # tree-sitter-super
 
 Grammaire Tree-sitter des fichiers `.super` du framework Super : celle de TSX
